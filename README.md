@@ -1,3 +1,4 @@
+# Is Equal Weighting Beats Market-Cap Weighting? 
 ## Short Description
 
 Here you will find my notebooks in which I examined how cap-weighted portfolio construction method differs from some other alternatives.
