@@ -1,3 +1,9 @@
+## Short Description
+
+Here you will find my notebooks in which I examined how cap-weighted portfolio construction method differs from some other alternatives.
+
+I first compare capitalization-weighted and equal-weighted portfolios using long-run **Kenneth French** and **CRSP data**. I then move to a stock-level universe and compare CW, EW, ERC, and GMV portfolios.
+
 ## Motivation
 
 This project began with a simple but provocative idea: **market-cap weighting may be a natural way to construct a portfolio, but not necessarily an efficient one.**
@@ -19,22 +25,6 @@ Under cap weighting, more capital is allocated to the largest companies. As a re
 - concentrate portfolio risk in a relatively small part of the investment universe;
 - have a much lower effective number of constituents than the nominal number of holdings suggests.
 
-However, this project does not take the superiority of equal weighting as given.
-
-Instead, the goal is to test the original hypothesis more carefully and ask:
-
-> **What exactly is inefficient about market-cap weighting, under which definition of efficiency, and does equal weighting actually solve these problems?**
-
-This distinction is important because several different concepts are often mixed together:
-
-- return performance;
-- risk-adjusted performance;
-- capital diversification;
-- risk diversification;
-- factor exposure;
-- portfolio concentration.
-
-Even if equal weighting historically outperforms cap weighting, this does not necessarily imply that cap weighting is structurally inferior. The difference may instead come from factor exposures, systematic rebalancing, differences in concentration, or other sources of risk.
 
 The project therefore develops naturally from:
 
@@ -42,32 +32,50 @@ The project therefore develops naturally from:
 
 The broader objective is not simply to identify the portfolio with the highest return, but to understand how different weighting rules distribute capital and risk, and what trade-offs they create in terms of diversification, stability, estimation error, turnover, and out-of-sample performance.
 
-## Project Pipeline
+## Project Structure
 
-1. **EW vs CW within industries**  
-   Exploratory comparison of equal- and cap-weighted industry portfolios.
+The empirical analysis is organized into three notebooks:
 
-2. **EW vs CW aggregate portfolios**  
-   Construct proper aggregate indices and compare return, volatility, Sharpe, drawdown, and tracking error.
+### `01_KF_inds_CRSP.ipynb`
 
-3. **Capital diversification**  
-   Compare HHI, effective number of industries, weight dispersion, and concentration over time.
+This notebook compares equal-weighted and value-weighted portfolios using:
 
-4. **Risk diversification**  
-   Compare risk contributions and the effective number of risk contributors.
+- Kenneth French industry portfolios across several industry classifications;
+- different historical starting periods, including samples extending back to 1926;
+- CRSP equal-weighted and value-weighted market indices.
 
-5. **Add ERC / Risk Parity**  
-   Move from equal capital allocation to equal risk allocation.
+The purpose is to examine whether the apparent advantage of equal weighting is persistent across datasets and time periods.
 
-6. **Add GMV**  
-   Test whether minimizing estimated variance reduces realized out-of-sample risk.
+---
 
-7. **Common walk-forward backtest**  
-   Compare CW, EW, ERC, and GMV under a consistent out-of-sample framework.
+### `02_100stock.ipynb`
 
-8. **Interpretation**  
-   Explain differences through concentration, covariance structure, rebalancing, turnover, and estimation error.
+Contains the analysis on a fixed set of 81 stocks over the sample period.
 
-### Core progression
+The notebook compares:
 
-**CW → EW → Capital Diversification → Risk Diversification → ERC → GMV → Out-of-Sample Comparison → Interpretation & Robustness**
+- Capitalization Weighting (CW)
+- Equal Weighting (EW)
+- Equal Risk Contribution (ERC)
+- Global Minimum Variance (GMV)
+
+The analysis focuses not only on returns and volatility, but also on:
+
+- effective number of constituents;
+- risk contributions;
+- effective number of risk contributors;
+- portfolio concentration;
+
+---
+
+### `03_expost.ipynb`
+
+Examines the role of covariance estimation error.
+
+The main analysis constructs ERC and GMV portfolios using covariance matrices estimated from past returns. This notebook instead considers an oracle setting in which the covariance structure of the next 36 months is treated as if it were known in advance.
+
+Future expected returns are **not** assumed to be known.
+
+The comparison therefore asks:
+
+> How would covariance-based portfolio construction behave if future risk could be estimated perfectly?
