@@ -80,3 +80,9 @@ Future expected returns are **not** assumed to be known.
 The comparison therefore asks:
 
 > How would covariance-based portfolio construction behave if future risk could be estimated perfectly?
+
+### `04_montecarlo.ipynb`
+
+This notebooks test the idea of repeatedly generating **random portfolios given the universe of stocks** each year throught the period of time and comparing the results with CW. 
+
+
