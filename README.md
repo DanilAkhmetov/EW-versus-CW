@@ -83,6 +83,6 @@ The comparison therefore asks:
 
 ### `04_montecarlo.ipynb`
 
-This notebooks test the idea of repeatedly generating **random portfolios given the universe of stocks** each year throught the period of time and comparing the results with CW. 
+This notebook test the idea of repeatedly generating **random portfolios given the universe of stocks** each year throught the period of time and comparing the results with CW. 
 
 
